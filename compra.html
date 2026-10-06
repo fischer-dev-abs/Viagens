@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Horizonte Viagens - Compra</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+
+       <a href=produtos.html style="text-decoration: none; color: white;"><h1>✈️ Horizonte Viagens</h1></a>
+
+        <nav>
+
+           
+
+            <button onclick="sair()">
+                Sair
+            </button>
+
+        </nav>
+
+    </header>
+
+
+    <main class="container">
+
+        <div class="checkout-box">
+
+            <h2>
+                Finalizar Compra
+            </h2>
+
+
+            <form id="compra-form">
+
+
+                <div class="form-group">
+
+                    <label>
+                        Destino Selecionado
+                    </label>
+
+                    <input
+                        type="text"
+                        id="compra-destino"
+                        readonly
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Nome Completo do Passageiro
+                    </label>
+
+                    <input
+                        type="text"
+                        id="compra-nome"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        CPF
+                    </label>
+
+                    <input
+                        type="text"
+                        id="compra-cpf"
+                        placeholder="000.000.000-00"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Data de Ida
+                    </label>
+
+                    <input
+                        type="date"
+                        id="compra-data-ida"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Data de Retorno
+                    </label>
+
+                    <input
+                        type="date"
+                        id="compra-data-volta"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Forma de Pagamento
+                    </label>
+
+                    <select id="compra-pagamento">
+
+                        <option value="Cartão de Crédito">
+                            Cartão de Crédito
+                        </option>
+
+                        <option value="PIX">
+                            PIX - 5% de desconto
+                        </option>
+
+                        <option value="Boleto">
+                            Boleto Bancário
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="btn"
+                >
+                    Confirmar e Comprar
+                </button>
+
+
+                <a
+                    href="produtos.html"
+                    class="btn btn-secondary"
+                >
+                    Voltar
+                </a>
+
+            </form>
+
+        </div>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

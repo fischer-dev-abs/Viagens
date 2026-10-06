@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Horizonte Viagens - Destinos</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+
+        <a href=produtos.html style="text-decoration: none; color: white;"><h1>✈️ Horizonte Viagens</h1></a>
+
+        <nav>
+
+
+
+            <button onclick="sair()">
+                Sair
+            </button>
+
+        </nav>
+
+    </header>
+
+
+    <main class="container">
+
+        <section class="welcome">
+
+            <h2>
+                Escolha um continente
+            </h2>
+
+            <p>
+                Clique em um continente para conhecer
+                seus principais pontos turísticos.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             CONTINENTES
+        ========================== -->
+
+        <div class="continentes">
+
+
+            <!-- AMÉRICA -->
+
+            <button
+                class="continente"
+                onclick="mostrarContinente('america')"
+            >
+
+                <span class="icone">
+                    🌎
+                </span>
+
+                <span>
+                    América
+                </span>
+
+            </button>
+
+
+            <!-- ÁFRICA -->
+
+            <button
+                class="continente"
+                onclick="mostrarContinente('africa')"
+            >
+
+                <span class="icone">
+                    🌍
+                </span>
+
+                <span>
+                    África
+                </span>
+
+            </button>
+
+
+            <!-- EUROPA -->
+
+            <button
+                class="continente"
+                onclick="mostrarContinente('europa')"
+            >
+
+                <span class="icone">
+                    🌍
+                </span>
+
+                <span>
+                    Europa
+                </span>
+
+            </button>
+
+
+            <!-- ÁSIA -->
+
+            <button
+                class="continente"
+                onclick="mostrarContinente('asia')"
+            >
+
+                <span class="icone">
+                    🌏
+                </span>
+
+                <span>
+                    Ásia
+                </span>
+
+            </button>
+
+
+            <!-- OCEANIA -->
+
+            <button
+                class="continente"
+                onclick="mostrarContinente('oceania')"
+            >
+
+                <span class="icone">
+                    🌏
+                </span>
+
+                <span>
+                    Oceania
+                </span>
+
+            </button>
+
+
+        </div>
+
+
+        <!-- =========================
+             AMÉRICA
+        ========================== -->
+
+        <section
+            id="america"
+            class="destinos hidden"
+        >
+
+            <h2>
+                Pontos turísticos da América
+            </h2>
+
+            <div class="products-grid">
+
+
+                <div class="product-card">
+
+                    <img
+                        src="cristo.jfif"
+                        alt="Cristo Redentor"
+                    >
+
+                    <div class="product-info">
+
+                        <h3>
+                            Cristo Redentor
+                        </h3>
+
+                        <p>
+                            Rio de Janeiro - Brasil.
+                            Um dos principais cartões-postais
+                            do país.
+                        </p>
+
+                        <div class="price">
+                            R$ 2.500,00
+                        </div>
+
+                        <button
+                            class="btn"
+                            onclick="irParaCompra(
+                                'Cristo Redentor - Brasil',
+                                2500
+                            )"
+                        >
+                            Comprar Viagem
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="product-card">
+
+                    <img
+                        src="machu.jfif"
+                        alt="Machu Picchu"
+                    >
+
+                    <div class="product-info">
+
+                        <h3>
+                            Machu Picchu
+                        </h3>
+
+                        <p>
+                            Peru. Uma das atrações
+                            históricas mais famosas
+                            da América do Sul.
+                        </p>
+
+                        <div class="price">
+                            R$ 3.200,00
+                        </div>
+
+                        <button
+                            class="btn"
+                            onclick="irParaCompra(
+                                'Machu Picchu - Peru',
+                                3200
+                            )"
+                        >
+                            Comprar Viagem
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="product-card">
+
+                    <img
+                        src="liberdade.jfif"
+                        alt="Estátua da Liberdade"
+                    >
+
+                    <div class="product-info">
+
+                        <h3>
+                            Estátua da Liberdade
+                        </h3>
+
+                        <p>
+                            Nova York - Estados Unidos.
+                            Um dos símbolos mais conhecidos
+                            do país.
+                        </p>
+
+                        <div class="price">
+                            R$ 4.500,00
+                        </div>
+
+                        <button
+                            class="btn"
+                            onclick="irParaCompra(
+                                'Estátua da Liberdade - EUA',
+                                4500
+                            )"
+                        >
+                            Comprar Viagem
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ÁFRICA
+        ========================== -->
+
+        <section
+            id="africa"
+            class="destinos hidden"
+        >
+
+            <h2>
+                Pontos turísticos da África
+            </h2>
+
+            <div class="products-grid">
+
+
+                <div class="product-card">
+
+                    <img
+                        src="gize.jfif"
+                        alt="Pirâmides do Egito"
+                    >
+
+                    <div class="product-info">
+
+                        <h3>
+                            Pirâmides de Gizé
+                        </h3>
+
+                        <p>
+                            Egito. Um dos maiores
+                            símbolos da história
+                            da humanidade.
+                        </p>
+
+                        <div class="price">
+                            R$ 4.200,00
+                        </div>
+
+                        <button
+                            class="btn"
+                            onclick="irParaCompra(
+                                'Pirâmides de Gizé - Egito',
+                                4200
+                            )"
+                        >
+                            Comprar Viagem
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="product-card">
+
+                    <img
+                        src="serengeti.jpg"
+                        alt="Safari"
+                    >
+
+                    <div class="product-info">
+
+                        <h3>
+                            Safari no Serengeti
+                        </h3>
+
+                        <p>
+                            Tanzânia. Experiência para
+                            conhecer a vida selvagem
+                            africana.
+                        </p>
+
+                        <div class="price">
+                            R$ 5.500,00
+                        </div>
+
+                        <button
+                            class="btn"
+                            onclick="irParaCompra(
+                                'Safari no Serengeti - Tanzânia',
+                                5500
+                            )"
+                        >
+                            Comprar Viagem
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="product-card">
+
+                    <img
+                        src="cataratas.jfif"
+                        alt="Cataratas"
+                    >
+
+                    <div class="product-info">
+
+                        <h3>
+                            Cataratas Vitória
+                        </h3>
+
+                        <p>
+                            Uma das maiores quedas
+                            d'água do continente africano.
+                        </p>
+
+                        <div class="price">
+                            R$ 4.800,00
+                        </div>
+
+                        <button
+                            class="btn"
+                            onclick="irParaCompra(
+                                'Cataratas Vitória',
+                                4800
+                            )"
+                        >
+                            Comprar Viagem
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             EUROPA
+        ========================== -->
+
+        <section
+            id="europa"
+            class="destinos hidden"
+        >
+
+            <h2>
+                Pontos turísticos da Europa
+            </h2>
+
+            <div class="products-grid">
+
+
+                <div class="product-card">
+
+                    <img
+                        src="torre.jfif"
+                        alt="Torre Eiffel"
+                    >
+
+                    <div class="product-info">
+
+                        <h3>
+                            Torre Eiffel
+                        </h3>
+
+                        <p>
+                            Paris - França.
+                            Um dos principais símbolos
+                            da Europa.
+                        </p>
+
+                        <div class="price">
+                            R$ 7.200,00
+                        </div>
+
+                        <button
+                            class="btn"
+                            onclick="irParaCompra(
+                                'Torre Eiffel - França',
+                                7200
+                            )"
+                        >
+                            Comprar Viagem
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="product-card">
+
+                    <img
+                        src="coliseu.jfif"
+                        alt="Coliseu"
+                    >
+
+                    <div class="product-info">
+
+                        <h3>
+                            Coliseu
+                        </h3>
+
+                        <p>
+                            Roma - Itália.
+                            Um dos maiores monumentos
+                            da Roma Antiga.
+                        </p>
+
+                        <div class="price">
+                            R$ 5.800,00
+                        </div>
+
+                        <button
+                            class="btn"
+                            onclick="irParaCompra(
+                                'Coliseu - Itália',
+                                5800
+                            )"
+                        >
+                            Comprar Viagem
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="product-card">
+
+                    <img
+                        src="big.jfif"
+                        alt="Big Ben"
+                    >
+
+                    <div class="product-info">
+
+                        <h3>
+                            Big Ben
+                        </h3>
+
+                        <p>
+                            Londres - Inglaterra.
+                            Um dos pontos turísticos
+                            mais conhecidos da cidade.
+                        </p>
+
+                        <div class="price">
+                            R$ 6.200,00
+                        </div>
+
+                        <button
+                            class="btn"
+                            onclick="irParaCompra(
+                                'Big Ben - Inglaterra',
+                                6200
+                            )"
+                        >
+                            Comprar Viagem
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ÁSIA
+        ========================== -->
+
+        <section
+            id="asia"
+            class="destinos hidden"
+        >
+
+            <h2>
+                Pontos turísticos da Ásia
+            </h2>
+
+            <div class="products-grid">
+
+
+                <div class="product-card">
+
+                    <img
+                        src="taj.jfif"
+                        alt="Taj Mahal"
+                    >
+
+                    <div class="product-info">
+
+                        <h3>
+                            Taj Mahal
+                        </h3>
+
+                        <p>
+                            Índia. Um dos monumentos
+                            mais famosos do mundo.
+                        </p>
+
+                        <div class="price">
+                            R$ 5.200,00
+                        </div>
+
+                        <button
+                            class="btn"
+                            onclick="irParaCompra(
+                                'Taj Mahal - Índia',
+                                5200
+                            )"
+                        >
+                            Comprar Viagem
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="product-card">
+
+                    <img
+                        src="muralha.jfif"
+                        alt="Muralha da China"
+                    >
+
+                    <div class="product-info">
+
+                        <h3>
+                            Grande Muralha da China
+                        </h3>
+
+                        <p>
+                            China. Uma das maiores
+                            construções históricas do mundo.
+                        </p>
+
+                        <div class="price">
+                            R$ 6.000,00
+                        </div>
+
+                        <button
+                            class="btn"
+                            onclick="irParaCompra(
+                                'Grande Muralha da China',
+                                6000
+                            )"
+                        >
+                            Comprar Viagem
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="product-card">
+
+                    <img
+                        src="fuji.jfif"
+                        alt="Monte Fuji"
+                    >
+
+                    <div class="product-info">
+
+                        <h3>
+                            Monte Fuji
+                        </h3>
+
+                        <p>
+                            Japão. Uma das paisagens
+                            naturais mais famosas do país.
+                        </p>
+
+                        <div class="price">
+                            R$ 6.500,00
+                        </div>
+
+                        <button
+                            class="btn"
+                            onclick="irParaCompra(
+                                'Monte Fuji - Japão',
+                                6500
+                            )"
+                        >
+                            Comprar Viagem
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             OCEANIA
+        ========================== -->
+
+        <section
+            id="oceania"
+            class="destinos hidden"
+        >
+
+            <h2>
+                Pontos turísticos da Oceania
+            </h2>
+
+            <div class="products-grid">
+
+
+                <div class="product-card">
+
+                    <img
+                        src="sydney.jfif"
+                        alt="Ópera de Sydney"
+                    >
+
+                    <div class="product-info">
+
+                        <h3>
+                            Ópera de Sydney
+                        </h3>
+
+                        <p>
+                            Austrália. Um dos edifícios
+                            mais conhecidos do país.
+                        </p>
+
+                        <div class="price">
+                            R$ 7.500,00
+                        </div>
+
+                        <button
+                            class="btn"
+                            onclick="irParaCompra(
+                                'Ópera de Sydney - Austrália',
+                                7500
+                            )"
+                        >
+                            Comprar Viagem
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="product-card">
+
+                    <img
+                        src="coral.jfif"
+                        alt="Grande Barreira de Corais"
+                    >
+
+                    <div class="product-info">
+
+                        <h3>
+                            Grande Barreira de Corais
+                        </h3>
+
+                        <p>
+                            Austrália. Um dos maiores
+                            sistemas de recifes do mundo.
+                        </p>
+
+                        <div class="price">
+                            R$ 8.000,00
+                        </div>
+
+                        <button
+                            class="btn"
+                            onclick="irParaCompra(
+                                'Grande Barreira de Corais - Austrália',
+                                8000
+                            )"
+                        >
+                            Comprar Viagem
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="product-card">
+
+                    <img
+                        src="sound.jfif"
+                        alt="Milford Sound"
+                    >
+
+                    <div class="product-info">
+
+                        <h3>
+                            Milford Sound
+                        </h3>
+
+                        <p>
+                            Nova Zelândia. Paisagem natural
+                            famosa por seus fiordes.
+                        </p>
+
+                        <div class="price">
+                            R$ 7.800,00
+                        </div>
+
+                        <button
+                            class="btn"
+                            onclick="irParaCompra(
+                                'Milford Sound - Nova Zelândia',
+                                7800
+                            )"
+                        >
+                            Comprar Viagem
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+
+    <script>
+
+        function mostrarContinente(
+            continente
+        ) {
+
+            /*
+             * Esconde todos os continentes
+             */
+
+            const destinos =
+                document.querySelectorAll(
+                    ".destinos"
+                );
+
+
+            destinos.forEach(function(secao) {
+
+                secao.classList.add(
+                    "hidden"
+                );
+
+            });
+
+
+            /*
+             * Mostra somente o continente
+             * escolhido
+             */
+
+            const selecionado =
+                document.getElementById(
+                    continente
+                );
+
+
+            selecionado.classList.remove(
+                "hidden"
+            );
+
+
+            /*
+             * Leva o usuário até
+             * os pontos turísticos
+             */
+
+            selecionado.scrollIntoView({
+                behavior: "smooth"
+            });
+
+        }
+
+    </script>
+
+</body>
+
+</html>

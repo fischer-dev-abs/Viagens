@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Horizonte Viagens - Administração</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+
+        <h1>✈️ Horizonte Viagens</h1>
+
+        <nav>
+
+            <a href="produtos.html">
+                Site
+            </a>
+
+            <button onclick="sair()">
+                Sair
+            </button>
+
+        </nav>
+
+    </header>
+
+
+    <main class="container">
+
+        <div class="admin-box">
+
+            <h2>
+                Painel do Administrador
+            </h2>
+
+            <p>
+                Gerenciamento das compras realizadas.
+            </p>
+
+
+            <div class="admin-stats">
+
+                <div class="stat-card">
+
+                    <span>
+                        Total de compras
+                    </span>
+
+                    <strong id="total-compras">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <h3>
+                Últimas Compras
+            </h3>
+
+
+            <div
+                id="lista-compras"
+                class="compras-lista"
+            >
+
+                <p class="empty">
+                    Nenhuma compra realizada.
+                </p>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
