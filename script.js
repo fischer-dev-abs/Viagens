@@ -224,6 +224,7 @@ if (cadastroForm) {
                     "Este e-mail já está cadastrado."
                 );
 
+
                 return;
             }
 
@@ -333,6 +334,84 @@ if (destinoInput) {
 
 
 // =====================================================
+// VALIDAÇÃO DAS DATAS DE VIAGEM
+// =====================================================
+
+const campoDataIda =
+    document.getElementById(
+        "compra-data-ida"
+    );
+
+const campoDataVolta =
+    document.getElementById(
+        "compra-data-volta"
+    );
+
+
+if (campoDataIda && campoDataVolta) {
+
+    campoDataIda.addEventListener(
+        "change",
+        function () {
+
+            // -----------------------------------------
+            // A DATA DE RETORNO NÃO PODE SER ANTES
+            // DA DATA DE IDA
+            // -----------------------------------------
+
+            campoDataVolta.min =
+                campoDataIda.value;
+
+
+            // Se o usuário já tiver colocado
+            // uma data de retorno inválida
+
+            if (
+                campoDataVolta.value &&
+                campoDataVolta.value < campoDataIda.value
+            ) {
+
+                campoDataVolta.value = "";
+
+
+                alert(
+                    "A data de retorno não pode ser anterior à data de ida."
+                );
+            }
+
+        }
+    );
+
+
+    campoDataVolta.addEventListener(
+        "change",
+        function () {
+
+            // -----------------------------------------
+            // SEGUNDA VERIFICAÇÃO
+            // -----------------------------------------
+
+            if (
+                campoDataIda.value &&
+                campoDataVolta.value &&
+                campoDataVolta.value < campoDataIda.value
+            ) {
+
+                campoDataVolta.value = "";
+
+
+                alert(
+                    "Data inválida!\n\n" +
+                    "A data de retorno não pode ser anterior à data de ida."
+                );
+            }
+
+        }
+    );
+}
+
+
+// =====================================================
 // FINALIZAR COMPRA
 // =====================================================
 
@@ -399,11 +478,68 @@ if (compraForm) {
             // VALIDAR DATAS
             // -----------------------------------------
 
-            if (dataVolta < dataIda) {
+            if (!dataIda || !dataVolta) {
 
                 alert(
+                    "Informe a data de ida e a data de retorno."
+                );
+
+                return;
+            }
+
+
+            // Converter as datas para objetos Date
+
+            const ida =
+                new Date(
+                    dataIda + "T00:00:00"
+                );
+
+
+            const volta =
+                new Date(
+                    dataVolta + "T00:00:00"
+                );
+
+
+            // Verificar se as datas são válidas
+
+            if (
+                isNaN(ida.getTime()) ||
+                isNaN(volta.getTime())
+            ) {
+
+                alert(
+                    "Informe datas válidas para a viagem."
+                );
+
+                return;
+            }
+
+
+            // -----------------------------------------
+            // RETORNO NÃO PODE SER ANTES DA IDA
+            // -----------------------------------------
+
+            if (volta < ida) {
+
+                alert(
+                    "Data inválida!\n\n" +
                     "A data de retorno não pode ser anterior à data de ida."
                 );
+
+
+                // Limpar a data inválida
+
+                document.getElementById(
+                    "compra-data-volta"
+                ).value = "";
+
+
+                document.getElementById(
+                    "compra-data-volta"
+                ).focus();
+
 
                 return;
             }
@@ -474,6 +610,7 @@ if (compraForm) {
                 "destinoSelecionado"
             );
 
+
             localStorage.removeItem(
                 "precoSelecionado"
             );
@@ -529,6 +666,7 @@ function carregarComprasAdmin() {
                 Nenhuma compra realizada.
             </p>
         `;
+
 
         return;
     }
