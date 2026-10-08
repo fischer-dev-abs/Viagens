@@ -65,48 +65,48 @@ if (cadastroForm) {
         const nascimento = document.getElementById("reg-nascimento").value;
         const senha = document.getElementById("reg-senha").value;
 
-        // NOME
         if (nome.length < 3) {
             alert("O nome deve ter pelo menos 3 caracteres.");
-            document.getElementById("reg-nome").focus();
             return;
         }
 
-        // SOBRENOME
         if (sobrenome.length < 3) {
             alert("O sobrenome deve ter pelo menos 3 caracteres.");
-            document.getElementById("reg-sobrenome").focus();
             return;
         }
 
-        // E-MAIL
         if (!email) {
             alert("Informe seu e-mail.");
             return;
         }
 
-        // IDADE
         if (!nascimento) {
             alert("Informe sua data de nascimento.");
-            document.getElementById("reg-nascimento").focus();
             return;
         }
 
         const dataNascimento = new Date(nascimento + "T00:00:00");
         const hoje = new Date();
 
+        if (isNaN(dataNascimento.getTime())) {
+            alert("Informe uma data de nascimento válida.");
+            return;
+        }
+
+        if (dataNascimento > hoje) {
+            alert("A data de nascimento não pode ser futura.");
+            return;
+        }
+
         let idade =
             hoje.getFullYear() - dataNascimento.getFullYear();
 
-        const diferencaMes =
+        const mes =
             hoje.getMonth() - dataNascimento.getMonth();
 
         if (
-            diferencaMes < 0 ||
-            (
-                diferencaMes === 0 &&
-                hoje.getDate() < dataNascimento.getDate()
-            )
+            mes < 0 ||
+            (mes === 0 && hoje.getDate() < dataNascimento.getDate())
         ) {
             idade--;
         }
@@ -115,16 +115,13 @@ if (cadastroForm) {
             alert(
                 "O cadastro é permitido somente para pessoas com 17 anos ou mais."
             );
-
-            document.getElementById("reg-nascimento").focus();
             return;
         }
 
-        // E-MAIL EXISTENTE
         const usuarios = obterUsuarios();
 
         const existe = usuarios.some(function(usuario) {
-            return usuario.email === email;
+            return usuario.email.toLowerCase() === email.toLowerCase();
         });
 
         if (existe) {
@@ -132,7 +129,6 @@ if (cadastroForm) {
             return;
         }
 
-        // CRIAR USUÁRIO
         const novoUsuario = {
             nome: nome,
             sobrenome: sobrenome,
@@ -145,7 +141,8 @@ if (cadastroForm) {
         usuarios.push(novoUsuario);
         salvarUsuarios(usuarios);
 
-        alert("Conta criada com sucesso!");
+        alert("Sua conta foi criada com sucesso!");
+
         window.location.href = "index.html";
     });
 }
@@ -157,7 +154,7 @@ function irParaCompra(destino, preco) {
     window.location.href = "compra.html";
 }
 
-// DESTINO
+// DESTINO DA COMPRA
 const destinoInput =
     document.getElementById("compra-destino");
 
@@ -264,7 +261,6 @@ if (compraForm) {
         const pagamento =
             document.getElementById("compra-pagamento").value;
 
-        // DATAS
         if (!dataIda || !dataVolta) {
             alert(
                 "Informe a data de ida e a data de retorno."
@@ -276,11 +272,6 @@ if (compraForm) {
             alert(
                 "A data de ida não pode ser anterior a hoje."
             );
-
-            document.getElementById(
-                "compra-data-ida"
-            ).focus();
-
             return;
         }
 
@@ -294,9 +285,7 @@ if (compraForm) {
             isNaN(ida.getTime()) ||
             isNaN(volta.getTime())
         ) {
-            alert(
-                "Informe datas válidas para a viagem."
-            );
+            alert("Informe datas válidas para a viagem.");
             return;
         }
 
@@ -304,26 +293,15 @@ if (compraForm) {
             alert(
                 "A data de retorno não pode ser anterior à data de ida."
             );
-
-            document.getElementById(
-                "compra-data-volta"
-            ).value = "";
-
-            document.getElementById(
-                "compra-data-volta"
-            ).focus();
-
             return;
         }
 
-        // VALOR
         let valorFinal = preco;
 
         if (pagamento === "PIX") {
             valorFinal = preco * 0.95;
         }
 
-        // COMPRA
         const compra = {
             destino: destino,
             preco: preco,
@@ -343,17 +321,11 @@ if (compraForm) {
         salvarCompras(compras);
 
         alert(
-            "Parabéns!\n\n" +
-            "Sua viagem foi comprada com sucesso!"
+            "Parabéns!\n\nSua viagem foi comprada com sucesso!"
         );
 
-        localStorage.removeItem(
-            "destinoSelecionado"
-        );
-
-        localStorage.removeItem(
-            "precoSelecionado"
-        );
+        localStorage.removeItem("destinoSelecionado");
+        localStorage.removeItem("precoSelecionado");
 
         window.location.href = "produtos.html";
     });
@@ -387,8 +359,7 @@ function carregarComprasAdmin() {
     listaCompras.innerHTML = "";
 
     compras.forEach(function(compra, index) {
-        const item =
-            document.createElement("div");
+        const item = document.createElement("div");
 
         item.className = "compra-item";
 
@@ -468,13 +439,5 @@ function sair() {
     localStorage.removeItem("usuarioLogado");
     localStorage.removeItem("destinoSelecionado");
     localStorage.removeItem("precoSelecionado");
+
     window.location.href = "index.html";
-}
-
-
-
-
-<script src="script.js"></script>
-
-
-
