@@ -28,10 +28,10 @@ if (loginForm) {
         const senha = document.getElementById("login-senha").value;
 
         if (email === "admin@horizon.com" && senha === "123") {
-            localStorage.setItem("usuarioLogado", "admin");
-            window.location.href = "admin.html";
-            return;
-        }
+    localStorage.setItem("usuarioLogado", "admin");
+    window.location.href = "admin.html";
+    return;
+}
 
         const usuarios = obterUsuarios();
 
