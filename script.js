@@ -28,10 +28,10 @@ if (loginForm) {
         const senha = document.getElementById("login-senha").value;
 
         if (email === "admin@horizon.com" && senha === "123") {
-    localStorage.setItem("usuarioLogado", "admin");
-    window.location.href = "admin.html";
-    return;
-}
+            localStorage.setItem("usuarioLogado", "admin");
+            window.location.href = "admin.html";
+            return;
+        }
 
         const usuarios = obterUsuarios();
 
@@ -67,21 +67,25 @@ if (cadastroForm) {
 
         if (nome.length < 3) {
             alert("O nome deve ter pelo menos 3 caracteres.");
+            document.getElementById("reg-nome").focus();
             return;
         }
 
         if (sobrenome.length < 3) {
             alert("O sobrenome deve ter pelo menos 3 caracteres.");
+            document.getElementById("reg-sobrenome").focus();
             return;
         }
 
         if (!email) {
             alert("Informe seu e-mail.");
+            document.getElementById("reg-email").focus();
             return;
         }
 
         if (!nascimento) {
             alert("Informe sua data de nascimento.");
+            document.getElementById("reg-nascimento").focus();
             return;
         }
 
@@ -90,23 +94,27 @@ if (cadastroForm) {
 
         if (isNaN(dataNascimento.getTime())) {
             alert("Informe uma data de nascimento válida.");
+            document.getElementById("reg-nascimento").focus();
             return;
         }
 
         if (dataNascimento > hoje) {
             alert("A data de nascimento não pode ser futura.");
+            document.getElementById("reg-nascimento").focus();
             return;
         }
 
-        let idade =
-            hoje.getFullYear() - dataNascimento.getFullYear();
+        let idade = hoje.getFullYear() - dataNascimento.getFullYear();
 
-        const mes =
+        const diferencaMes =
             hoje.getMonth() - dataNascimento.getMonth();
 
         if (
-            mes < 0 ||
-            (mes === 0 && hoje.getDate() < dataNascimento.getDate())
+            diferencaMes < 0 ||
+            (
+                diferencaMes === 0 &&
+                hoje.getDate() < dataNascimento.getDate()
+            )
         ) {
             idade--;
         }
@@ -115,6 +123,7 @@ if (cadastroForm) {
             alert(
                 "O cadastro é permitido somente para pessoas com 17 anos ou mais."
             );
+            document.getElementById("reg-nascimento").focus();
             return;
         }
 
@@ -154,7 +163,7 @@ function irParaCompra(destino, preco) {
     window.location.href = "compra.html";
 }
 
-// DESTINO DA COMPRA
+// DESTINO
 const destinoInput =
     document.getElementById("compra-destino");
 
@@ -190,7 +199,7 @@ function obterDataHoje() {
     return `${ano}-${mes}-${dia}`;
 }
 
-// DATAS DA VIAGEM
+// DATAS
 const campoDataIda =
     document.getElementById("compra-data-ida");
 
@@ -272,6 +281,11 @@ if (compraForm) {
             alert(
                 "A data de ida não pode ser anterior a hoje."
             );
+
+            document.getElementById(
+                "compra-data-ida"
+            ).focus();
+
             return;
         }
 
@@ -293,6 +307,15 @@ if (compraForm) {
             alert(
                 "A data de retorno não pode ser anterior à data de ida."
             );
+
+            document.getElementById(
+                "compra-data-volta"
+            ).value = "";
+
+            document.getElementById(
+                "compra-data-volta"
+            ).focus();
+
             return;
         }
 
@@ -350,9 +373,8 @@ function carregarComprasAdmin() {
     }
 
     if (compras.length === 0) {
-        listaCompras.innerHTML = `
-            <p class="empty">Nenhuma compra realizada.</p>
-        `;
+        listaCompras.innerHTML =
+            '<p class="empty">Nenhuma compra realizada.</p>';
         return;
     }
 
@@ -441,3 +463,4 @@ function sair() {
     localStorage.removeItem("precoSelecionado");
 
     window.location.href = "index.html";
+}
