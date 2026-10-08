@@ -1,6 +1,4 @@
-/* =========================
-   RESET
-========================= */
+/* RESET */
 
 * {
     margin: 0;
@@ -9,505 +7,326 @@
     font-family: Arial, sans-serif;
 }
 
-
 body {
     background: #f4f6f9;
     color: #333;
 }
 
-
-/* =========================
-   LOGIN
-========================= */
+/* LOGIN */
 
 .login-page {
     min-height: 100vh;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     padding: 20px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #0077b6,
-            #00b4d8
-        );
+    background: linear-gradient(135deg, #0077b6, #00b4d8);
 }
-
 
 .auth-card {
     width: 100%;
     max-width: 420px;
-
     padding: 35px;
-
     background: white;
-
     border-radius: 12px;
-
-    box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
-
 
 .auth-card h1 {
     text-align: center;
-
     color: #0077b6;
-
     margin-bottom: 5px;
 }
 
-
 .subtitle {
     text-align: center;
-
     color: #777;
-
     margin-bottom: 25px;
 }
 
-
-/* =========================
-   FORMULÁRIOS
-========================= */
+/* FORMULÁRIOS */
 
 .form-group {
     margin-bottom: 18px;
 }
 
-
 .form-group label {
     display: block;
-
     margin-bottom: 7px;
-
     font-weight: bold;
-
     font-size: 14px;
 }
-
 
 .form-group input,
 .form-group select {
     width: 100%;
-
     padding: 12px;
-
     border: 1px solid #ccc;
-
     border-radius: 6px;
-
     font-size: 15px;
-
     outline: none;
 }
-
 
 .form-group input:focus,
 .form-group select:focus {
     border-color: #0077b6;
 }
 
-
 .form-row {
     display: grid;
-
     grid-template-columns: 1fr 1fr;
-
     gap: 15px;
 }
 
-
-/* =========================
-   BOTÕES
-========================= */
+/* BOTÕES */
 
 .btn {
     width: 100%;
-
     display: block;
-
     padding: 12px;
-
     margin-top: 10px;
-
     border: none;
-
     border-radius: 6px;
-
     background: #0077b6;
-
     color: white;
-
     text-align: center;
-
     text-decoration: none;
-
     font-size: 16px;
-
     font-weight: bold;
-
     cursor: pointer;
 }
-
 
 .btn:hover {
     background: #005f87;
 }
 
-
 .btn-secondary {
     background: #6c757d;
-
     margin-top: 12px;
 }
-
 
 .btn-secondary:hover {
     background: #545b62;
 }
 
-
-/* =========================
-   LOGIN
-========================= */
+/* LOGIN EXTRA */
 
 .divider {
     text-align: center;
-
     margin: 20px 0;
-
     color: #999;
 }
 
-
 .hint {
     margin-top: 20px;
-
     text-align: center;
-
     font-size: 12px;
-
     color: #777;
-
     line-height: 1.5;
 }
 
-
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 header {
     background: #0077b6;
-
     color: white;
-
     padding: 18px 30px;
-
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
 }
-
 
 header h1 {
     font-size: 24px;
 }
 
-
 nav {
     display: flex;
-
     align-items: center;
-
     gap: 20px;
 }
-
 
 nav a,
 nav button {
     color: white;
-
     text-decoration: none;
-
     background: none;
-
     border: none;
-
     font-size: 16px;
-
     cursor: pointer;
 }
-
 
 nav a:hover,
 nav button:hover {
     text-decoration: underline;
 }
 
-
-/* =========================
-   CONTAINER
-========================= */
+/* CONTAINER */
 
 .container {
     max-width: 1100px;
-
     margin: 35px auto;
-
     padding: 0 20px;
 }
-
 
 .welcome {
     margin-bottom: 25px;
 }
 
-
 .welcome h2 {
     color: #0077b6;
-
     margin-bottom: 5px;
 }
 
-
-/* =========================
-   PRODUTOS
-========================= */
+/* PRODUTOS */
 
 .products-grid {
     display: grid;
-
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(280px, 1fr)
-        );
-
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px;
 }
 
-
 .product-card {
     background: white;
-
     border-radius: 10px;
-
     overflow: hidden;
-
-    box-shadow:
-        0 3px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
-
 
 .product-card img {
     width: 100%;
-
     height: 190px;
-
     object-fit: cover;
 }
-
 
 .product-info {
     padding: 20px;
 }
 
-
 .product-info h3 {
     color: #0077b6;
-
     margin-bottom: 8px;
 }
 
-
 .product-info p {
     color: #666;
-
     line-height: 1.5;
-
     margin-bottom: 15px;
 }
 
-
 .price {
     color: #2a9d8f;
-
     font-size: 21px;
-
     font-weight: bold;
-
     margin-bottom: 10px;
 }
 
-
-/* =========================
-   COMPRA
-========================= */
+/* COMPRA */
 
 .checkout-box {
     max-width: 650px;
-
     margin: 0 auto;
-
     background: white;
-
     padding: 30px;
-
     border-radius: 10px;
-
-    box-shadow:
-        0 3px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
-
 
 .checkout-box h2 {
     color: #0077b6;
-
     margin-bottom: 25px;
 }
-
 
 #compra-destino {
     background: #eee;
 }
 
-
-/* =========================
-   ADMIN
-========================= */
+/* ADMIN */
 
 .admin-box {
     background: white;
-
     padding: 30px;
-
     border-radius: 10px;
-
-    box-shadow:
-        0 3px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
-
 
 .admin-box h2 {
     color: #0077b6;
-
     margin-bottom: 10px;
 }
 
-
 .admin-box h3 {
     margin-top: 30px;
-
     margin-bottom: 15px;
 }
-
 
 .admin-stats {
     margin-top: 25px;
 }
 
-
 .stat-card {
     width: 220px;
-
     padding: 20px;
-
     border-radius: 8px;
-
     background: #e9f7fb;
-
     border-left: 5px solid #0077b6;
 }
 
-
 .stat-card span {
     display: block;
-
     color: #666;
-
     margin-bottom: 5px;
 }
 
-
 .stat-card strong {
     font-size: 28px;
-
     color: #0077b6;
 }
 
-
 .compras-lista {
     display: flex;
-
     flex-direction: column;
-
     gap: 12px;
 }
 
-
 .compra-item {
     padding: 15px;
-
     border-radius: 7px;
-
     background: #f4f6f9;
-
     border-left: 4px solid #2a9d8f;
 }
-
 
 .compra-item strong {
     color: #0077b6;
 }
 
-
 .empty {
     color: #777;
 }
 
-
-/* =========================
-   RESPONSIVO
-========================= */
+/* RESPONSIVO */
 
 @media (max-width: 700px) {
-
     header {
         flex-direction: column;
-
         gap: 15px;
-
         text-align: center;
     }
-
 
     .form-row {
         grid-template-columns: 1fr;
     }
 
-
     .auth-card {
         padding: 25px;
     }
 
-
     header h1 {
         font-size: 20px;
     }
-
 }
 
-/* =========================
-   CONTINENTES
-========================= */
+/* CONTINENTES */
 
 .continentes {
     display: flex;
@@ -521,38 +340,22 @@ nav button:hover {
 .continente {
     width: 160px;
     height: 160px;
-
     border: none;
     border-radius: 50%;
-
-    background: linear-gradient(
-        135deg,
-        #0077b6,
-        #00b4d8
-    );
-
+    background: linear-gradient(135deg, #0077b6, #00b4d8);
     color: white;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     cursor: pointer;
-
-    box-shadow:
-        0 5px 15px rgba(0,0,0,0.20);
-
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     transition: 0.3s;
 }
 
 .continente:hover {
     transform: scale(1.08);
-    background: linear-gradient(
-        135deg,
-        #005f87,
-        #0096c7
-    );
+    background: linear-gradient(135deg, #005f87, #0096c7);
 }
 
 .continente .icone {
@@ -565,10 +368,7 @@ nav button:hover {
     font-weight: bold;
 }
 
-
-/* =========================
-   PONTOS TURÍSTICOS
-========================= */
+/* DESTINOS */
 
 .destinos {
     margin-top: 30px;
@@ -583,4 +383,168 @@ nav button:hover {
 
 .destinos.hidden {
     display: none;
+}
+
+/* BENEFÍCIOS */
+
+.beneficios {
+    margin-top: 70px;
+    padding: 55px 20px;
+    background: #eaf7fb;
+    border-top: 1px solid #d8edf3;
+    border-bottom: 1px solid #d8edf3;
+}
+
+.beneficios-titulo {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.beneficios-titulo h2 {
+    color: #0077b6;
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.beneficios-titulo p {
+    color: #666;
+    font-size: 15px;
+}
+
+.beneficios-grid {
+    max-width: 1050px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.beneficio {
+    background: white;
+    padding: 25px 18px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+    transition: 0.3s;
+}
+
+.beneficio:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.beneficio-icone {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #e6f6fa;
+    font-size: 29px;
+}
+
+.beneficio h3 {
+    color: #0077b6;
+    font-size: 17px;
+    margin-bottom: 9px;
+}
+
+.beneficio p {
+    color: #666;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* CHAMADA */
+
+.chamada-final {
+    max-width: 1050px;
+    margin: 55px auto;
+    padding: 40px 25px;
+    border-radius: 12px;
+    text-align: center;
+    color: white;
+    background: linear-gradient(135deg, #0077b6, #00b4d8);
+    box-shadow: 0 7px 20px rgba(0, 119, 182, 0.18);
+}
+
+.chamada-final h2 {
+    font-size: 27px;
+    margin-bottom: 10px;
+}
+
+.chamada-final p {
+    max-width: 600px;
+    margin: 0 auto 22px;
+    line-height: 1.5;
+    opacity: 0.95;
+}
+
+.chamada-final button {
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    background: white;
+    color: #0077b6;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.chamada-final button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* FOOTER */
+
+footer {
+    margin-top: 30px;
+    padding: 25px 20px;
+    background: #006a9f;
+    color: white;
+    text-align: center;
+}
+
+.footer-logo {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+/* RESPONSIVO NOVO */
+
+@media (max-width: 800px) {
+    .beneficios-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .beneficios {
+        padding: 40px 15px;
+    }
+
+    .beneficios-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .chamada-final {
+        margin: 40px 15px;
+        padding: 35px 20px;
+    }
+
+    .chamada-final h2 {
+        font-size: 23px;
+    }
 }
