@@ -58,12 +58,10 @@ if (loginForm) {
 
             event.preventDefault();
 
-
             const email =
                 document.getElementById(
                     "login-email"
                 ).value.trim();
-
 
             const senha =
                 document.getElementById(
@@ -71,9 +69,7 @@ if (loginForm) {
                 ).value;
 
 
-            // -----------------------------------------
             // ADMIN
-            // -----------------------------------------
 
             if (
                 email === "admin@horizon.com" &&
@@ -85,18 +81,14 @@ if (loginForm) {
                     "admin"
                 );
 
-
                 window.location.href =
                     "admin.html";
-
 
                 return;
             }
 
 
-            // -----------------------------------------
             // CLIENTE
-            // -----------------------------------------
 
             const usuarios =
                 obterUsuarios();
@@ -115,8 +107,6 @@ if (loginForm) {
                 );
 
 
-            // Cliente demonstrativo
-
             const clienteDemo =
                 email === "cliente@email.com" &&
                 senha === "123";
@@ -128,7 +118,6 @@ if (loginForm) {
                     "usuarioLogado",
                     email
                 );
-
 
                 window.location.href =
                     "produtos.html";
@@ -200,11 +189,63 @@ if (cadastroForm) {
                 ).value;
 
 
+            // -----------------------------------------
+            // VALIDAR NOME
+            // -----------------------------------------
+
+            if (nome.length < 3) {
+
+                alert(
+                    "O nome deve ter pelo menos 3 caracteres."
+                );
+
+                document.getElementById(
+                    "reg-nome"
+                ).focus();
+
+                return;
+            }
+
+
+            // -----------------------------------------
+            // VALIDAR SOBRENOME
+            // -----------------------------------------
+
+            if (sobrenome.length < 3) {
+
+                alert(
+                    "O sobrenome deve ter pelo menos 3 caracteres."
+                );
+
+                document.getElementById(
+                    "reg-sobrenome"
+                ).focus();
+
+                return;
+            }
+
+
+            // -----------------------------------------
+            // VALIDAR E-MAIL
+            // -----------------------------------------
+
+            if (!email) {
+
+                alert(
+                    "Informe seu e-mail."
+                );
+
+                return;
+            }
+
+
+            // -----------------------------------------
+            // VERIFICAR E-MAIL EXISTENTE
+            // -----------------------------------------
+
             const usuarios =
                 obterUsuarios();
 
-
-            // Verificar e-mail existente
 
             const existe =
                 usuarios.some(
@@ -224,12 +265,13 @@ if (cadastroForm) {
                     "Este e-mail já está cadastrado."
                 );
 
-
                 return;
             }
 
 
-            // Criar usuário
+            // -----------------------------------------
+            // CRIAR USUÁRIO
+            // -----------------------------------------
 
             const novoUsuario = {
 
@@ -334,6 +376,31 @@ if (destinoInput) {
 
 
 // =====================================================
+// DATA ATUAL
+// =====================================================
+
+function obterDataHoje() {
+
+    const hoje = new Date();
+
+    const ano =
+        hoje.getFullYear();
+
+    const mes =
+        String(
+            hoje.getMonth() + 1
+        ).padStart(2, "0");
+
+    const dia =
+        String(
+            hoje.getDate()
+        ).padStart(2, "0");
+
+    return `${ano}-${mes}-${dia}`;
+}
+
+
+// =====================================================
 // VALIDAÇÃO DAS DATAS DE VIAGEM
 // =====================================================
 
@@ -342,10 +409,20 @@ const campoDataIda =
         "compra-data-ida"
     );
 
+
 const campoDataVolta =
     document.getElementById(
         "compra-data-volta"
     );
+
+
+if (campoDataIda) {
+
+    // A data de ida começa a partir de hoje
+
+    campoDataIda.min =
+        obterDataHoje();
+}
 
 
 if (campoDataIda && campoDataVolta) {
@@ -354,17 +431,11 @@ if (campoDataIda && campoDataVolta) {
         "change",
         function () {
 
-            // -----------------------------------------
-            // A DATA DE RETORNO NÃO PODE SER ANTES
-            // DA DATA DE IDA
-            // -----------------------------------------
+            // Retorno não pode ser antes da ida
 
             campoDataVolta.min =
                 campoDataIda.value;
 
-
-            // Se o usuário já tiver colocado
-            // uma data de retorno inválida
 
             if (
                 campoDataVolta.value &&
@@ -372,7 +443,6 @@ if (campoDataIda && campoDataVolta) {
             ) {
 
                 campoDataVolta.value = "";
-
 
                 alert(
                     "A data de retorno não pode ser anterior à data de ida."
@@ -387,10 +457,6 @@ if (campoDataIda && campoDataVolta) {
         "change",
         function () {
 
-            // -----------------------------------------
-            // SEGUNDA VERIFICAÇÃO
-            // -----------------------------------------
-
             if (
                 campoDataIda.value &&
                 campoDataVolta.value &&
@@ -399,9 +465,7 @@ if (campoDataIda && campoDataVolta) {
 
                 campoDataVolta.value = "";
 
-
                 alert(
-                    "Data inválida!\n\n" +
                     "A data de retorno não pode ser anterior à data de ida."
                 );
             }
@@ -488,7 +552,27 @@ if (compraForm) {
             }
 
 
-            // Converter as datas para objetos Date
+            // -----------------------------------------
+            // IDA NÃO PODE SER ANTES DE HOJE
+            // -----------------------------------------
+
+            if (dataIda < obterDataHoje()) {
+
+                alert(
+                    "A data de ida não pode ser anterior a hoje."
+                );
+
+                document.getElementById(
+                    "compra-data-ida"
+                ).focus();
+
+                return;
+            }
+
+
+            // -----------------------------------------
+            // CONVERTER DATAS
+            // -----------------------------------------
 
             const ida =
                 new Date(
@@ -501,8 +585,6 @@ if (compraForm) {
                     dataVolta + "T00:00:00"
                 );
 
-
-            // Verificar se as datas são válidas
 
             if (
                 isNaN(ida.getTime()) ||
@@ -524,12 +606,9 @@ if (compraForm) {
             if (volta < ida) {
 
                 alert(
-                    "Data inválida!\n\n" +
                     "A data de retorno não pode ser anterior à data de ida."
                 );
 
-
-                // Limpar a data inválida
 
                 document.getElementById(
                     "compra-data-volta"
@@ -604,8 +683,6 @@ if (compraForm) {
             );
 
 
-            // Limpar seleção
-
             localStorage.removeItem(
                 "destinoSelecionado"
             );
@@ -666,7 +743,6 @@ function carregarComprasAdmin() {
                 Nenhuma compra realizada.
             </p>
         `;
-
 
         return;
     }
