@@ -103,14 +103,19 @@ if (cadastroForm) {
 
         if (
             diferencaMes < 0 ||
-            (diferencaMes === 0 &&
-                hoje.getDate() < dataNascimento.getDate())
+            (
+                diferencaMes === 0 &&
+                hoje.getDate() < dataNascimento.getDate()
+            )
         ) {
             idade--;
         }
 
         if (idade < 17) {
-            alert("O cadastro é permitido somente para pessoas com 17 anos ou mais.");
+            alert(
+                "O cadastro é permitido somente para pessoas com 17 anos ou mais."
+            );
+
             document.getElementById("reg-nascimento").focus();
             return;
         }
@@ -153,15 +158,20 @@ function irParaCompra(destino, preco) {
 }
 
 // DESTINO
-const destinoInput = document.getElementById("compra-destino");
+const destinoInput =
+    document.getElementById("compra-destino");
 
 if (destinoInput) {
-    const destino = localStorage.getItem("destinoSelecionado");
-    const preco = Number(localStorage.getItem("precoSelecionado"));
+    const destino =
+        localStorage.getItem("destinoSelecionado");
+
+    const preco =
+        Number(localStorage.getItem("precoSelecionado"));
 
     if (destino) {
         destinoInput.value =
-            destino + " - R$ " +
+            destino +
+            " - R$ " +
             preco.toLocaleString("pt-BR", {
                 minimumFractionDigits: 2
             });
@@ -171,9 +181,14 @@ if (destinoInput) {
 // DATA ATUAL
 function obterDataHoje() {
     const hoje = new Date();
+
     const ano = hoje.getFullYear();
-    const mes = String(hoje.getMonth() + 1).padStart(2, "0");
-    const dia = String(hoje.getDate()).padStart(2, "0");
+
+    const mes =
+        String(hoje.getMonth() + 1).padStart(2, "0");
+
+    const dia =
+        String(hoje.getDate()).padStart(2, "0");
 
     return `${ano}-${mes}-${dia}`;
 }
@@ -198,7 +213,10 @@ if (campoDataIda && campoDataVolta) {
             campoDataVolta.value < campoDataIda.value
         ) {
             campoDataVolta.value = "";
-            alert("A data de retorno não pode ser anterior à data de ida.");
+
+            alert(
+                "A data de retorno não pode ser anterior à data de ida."
+            );
         }
     });
 
@@ -209,13 +227,17 @@ if (campoDataIda && campoDataVolta) {
             campoDataVolta.value < campoDataIda.value
         ) {
             campoDataVolta.value = "";
-            alert("A data de retorno não pode ser anterior à data de ida.");
+
+            alert(
+                "A data de retorno não pode ser anterior à data de ida."
+            );
         }
     });
 }
 
 // FINALIZAR COMPRA
-const compraForm = document.getElementById("compra-form");
+const compraForm =
+    document.getElementById("compra-form");
 
 if (compraForm) {
     compraForm.addEventListener("submit", function(event) {
@@ -242,30 +264,55 @@ if (compraForm) {
         const pagamento =
             document.getElementById("compra-pagamento").value;
 
-        // VALIDAR DATAS
+        // DATAS
         if (!dataIda || !dataVolta) {
-            alert("Informe a data de ida e a data de retorno.");
+            alert(
+                "Informe a data de ida e a data de retorno."
+            );
             return;
         }
 
         if (dataIda < obterDataHoje()) {
-            alert("A data de ida não pode ser anterior a hoje.");
-            document.getElementById("compra-data-ida").focus();
+            alert(
+                "A data de ida não pode ser anterior a hoje."
+            );
+
+            document.getElementById(
+                "compra-data-ida"
+            ).focus();
+
             return;
         }
 
-        const ida = new Date(dataIda + "T00:00:00");
-        const volta = new Date(dataVolta + "T00:00:00");
+        const ida =
+            new Date(dataIda + "T00:00:00");
 
-        if (isNaN(ida.getTime()) || isNaN(volta.getTime())) {
-            alert("Informe datas válidas para a viagem.");
+        const volta =
+            new Date(dataVolta + "T00:00:00");
+
+        if (
+            isNaN(ida.getTime()) ||
+            isNaN(volta.getTime())
+        ) {
+            alert(
+                "Informe datas válidas para a viagem."
+            );
             return;
         }
 
         if (volta < ida) {
-            alert("A data de retorno não pode ser anterior à data de ida.");
-            document.getElementById("compra-data-volta").value = "";
-            document.getElementById("compra-data-volta").focus();
+            alert(
+                "A data de retorno não pode ser anterior à data de ida."
+            );
+
+            document.getElementById(
+                "compra-data-volta"
+            ).value = "";
+
+            document.getElementById(
+                "compra-data-volta"
+            ).focus();
+
             return;
         }
 
@@ -286,7 +333,8 @@ if (compraForm) {
             dataIda: dataIda,
             dataVolta: dataVolta,
             pagamento: pagamento,
-            dataCompra: new Date().toLocaleDateString("pt-BR")
+            dataCompra:
+                new Date().toLocaleDateString("pt-BR")
         };
 
         const compras = obterCompras();
@@ -299,8 +347,13 @@ if (compraForm) {
             "Sua viagem foi comprada com sucesso!"
         );
 
-        localStorage.removeItem("destinoSelecionado");
-        localStorage.removeItem("precoSelecionado");
+        localStorage.removeItem(
+            "destinoSelecionado"
+        );
+
+        localStorage.removeItem(
+            "precoSelecionado"
+        );
 
         window.location.href = "produtos.html";
     });
@@ -334,7 +387,8 @@ function carregarComprasAdmin() {
     listaCompras.innerHTML = "";
 
     compras.forEach(function(compra, index) {
-        const item = document.createElement("div");
+        const item =
+            document.createElement("div");
 
         item.className = "compra-item";
 
@@ -355,7 +409,9 @@ function carregarComprasAdmin() {
             <br>
             <strong>Valor:</strong> R$ ${compra.valorFinal.toLocaleString(
                 "pt-BR",
-                { minimumFractionDigits: 2 }
+                {
+                    minimumFractionDigits: 2
+                }
             )}
             <br>
             <strong>Data da Compra:</strong> ${compra.dataCompra}
@@ -377,7 +433,34 @@ function formatarData(data) {
         return data;
     }
 
-    return partes[2] + "/" + partes[1] + "/" + partes[0];
+    return (
+        partes[2] +
+        "/" +
+        partes[1] +
+        "/" +
+        partes[0]
+    );
+}
+
+// CONTINENTES
+function mostrarContinente(continente) {
+    const destinos =
+        document.querySelectorAll(".destinos");
+
+    destinos.forEach(function(secao) {
+        secao.classList.add("hidden");
+    });
+
+    const selecionado =
+        document.getElementById(continente);
+
+    if (selecionado) {
+        selecionado.classList.remove("hidden");
+
+        selecionado.scrollIntoView({
+            behavior: "smooth"
+        });
+    }
 }
 
 // LOGOUT
@@ -389,4 +472,9 @@ function sair() {
 }
 
 
-Total: 299 linhas de código, contando linhas em branco e comentários.
+Esse é o script.js que você deve usar agora. Ele incorpora a função mostrarContinente() que estava dentro do produtos.html, então no produtos.html deve ficar somente:
+
+<script src="script.js"></script>
+
+
+Assim você não terá JavaScript duplicado entre os arquivos.
