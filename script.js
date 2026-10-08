@@ -472,9 +472,9 @@ function sair() {
 }
 
 
-Esse é o script.js que você deve usar agora. Ele incorpora a função mostrarContinente() que estava dentro do produtos.html, então no produtos.html deve ficar somente:
+
 
 <script src="script.js"></script>
 
 
-Assim você não terá JavaScript duplicado entre os arquivos.
+
