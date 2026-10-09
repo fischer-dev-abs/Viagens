@@ -1,4 +1,4 @@
-/* RESET GERAL */
+* RESET GERAL */
 * {
     margin: 0;
     padding: 0;
@@ -10,17 +10,19 @@ html {
     width: 100%;
     min-height: 100%;
     overflow-x: hidden;
+    scroll-padding-top: 90px;
 }
 
 body {
     width: 100%;
     min-height: 100vh;
+    padding-top: 68px;
     background: #f4f6f9;
     color: #333;
     overflow-x: hidden;
 }
 
-/*LOGIN */
+/* LOGIN */
 .login-page {
     min-height: 100vh;
     display: flex;
@@ -51,7 +53,7 @@ body {
     margin-bottom: 25px;
 }
 
-/*FORMULARIOS */
+/* FORMULÁRIOS */
 .form-group {
     margin-bottom: 18px;
 }
@@ -84,7 +86,7 @@ body {
     gap: 15px;
 }
 
-/*BOTOES*/
+/* BOTÕES */
 .btn {
     width: 100%;
     display: block;
@@ -114,7 +116,7 @@ body {
     background: #545b62;
 }
 
-/*LOGIN EXTRA*/
+/* LOGIN EXTRA */
 .divider {
     text-align: center;
     margin: 20px 0;
@@ -129,19 +131,33 @@ body {
     line-height: 1.5;
 }
 
-/*CABECALHO*/
+/* CABEÇALHO FIXO */
 header {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
+    min-height: 68px;
+    z-index: 1000;
+
     background: #0077b6;
     color: white;
     padding: 18px 30px;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 
 header h1 {
     font-size: 24px;
+}
+
+header a {
+    text-decoration: none;
+    color: white;
 }
 
 nav {
@@ -165,7 +181,7 @@ nav button:hover {
     text-decoration: underline;
 }
 
-/*CONTAINER PRINCIPAL*/
+/* CONTAINER PRINCIPAL */
 .container {
     width: 100%;
     max-width: 1100px;
@@ -182,7 +198,7 @@ nav button:hover {
     margin-bottom: 5px;
 }
 
-/*PRODUTOS*/
+/* PRODUTOS */
 .products-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -225,7 +241,7 @@ nav button:hover {
     margin-bottom: 10px;
 }
 
-/*COMPRA*/
+/* COMPRA */
 .checkout-box {
     width: 100%;
     max-width: 650px;
@@ -245,7 +261,7 @@ nav button:hover {
     background: #eee;
 }
 
-/*ADMINISTRACAO*/
+/* ADMINISTRAÇÃO */
 .admin-box {
     background: white;
     padding: 30px;
@@ -307,7 +323,7 @@ nav button:hover {
     color: #777;
 }
 
-/*CONTINENTES*/
+/* CONTINENTES */
 .continentes {
     display: flex;
     justify-content: center;
@@ -325,10 +341,12 @@ nav button:hover {
     border-radius: 50%;
     background: linear-gradient(135deg, #0077b6, #00b4d8);
     color: white;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     cursor: pointer;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     transition: 0.3s;
@@ -349,10 +367,11 @@ nav button:hover {
     font-weight: bold;
 }
 
-/*DESTINOS */
+/* DESTINOS */
 .destinos {
     margin-top: 30px;
     margin-bottom: 50px;
+    scroll-margin-top: 90px;
 }
 
 .destinos h2 {
@@ -365,7 +384,7 @@ nav button:hover {
     display: none;
 }
 
-/*BENEFICIOS*/
+/* BENEFÍCIOS */
 .beneficios {
     width: 100%;
     margin-top: 70px;
@@ -395,6 +414,7 @@ nav button:hover {
     width: 100%;
     max-width: 1050px;
     margin: 0 auto;
+
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 20px;
@@ -419,9 +439,11 @@ nav button:hover {
     width: 60px;
     height: 60px;
     margin: 0 auto 15px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     border-radius: 50%;
     background: #e6f6fa;
     font-size: 29px;
@@ -439,7 +461,7 @@ nav button:hover {
     line-height: 1.5;
 }
 
-/*CHAMADA FINAL*/
+/* CHAMADA FINAL */
 .chamada-final {
     display: block;
     width: 100%;
@@ -483,7 +505,7 @@ nav button:hover {
     box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* ============================== RODAPE ============================== */
+/* RODAPÉ */
 footer {
     display: block;
     width: 100%;
@@ -508,123 +530,130 @@ footer p {
     opacity: 0.9;
 }
 
-/*RESPONSIVIDADE*/
+/* RESPONSIVIDADE: TABLETS */
 @media (max-width: 800px) {
     .beneficios-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-    
+
     .products-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-    
+
     .continentes {
         gap: 20px;
     }
-    
+
     .continente {
         width: 140px;
         height: 140px;
     }
-    
+
     .continente .icone {
         font-size: 45px;
     }
 }
 
+/* RESPONSIVIDADE: CELULARES */
 @media (max-width: 500px) {
+    body {
+        padding-top: 100px;
+    }
+
     header {
+        min-height: 100px;
         flex-direction: column;
         gap: 15px;
         text-align: center;
         padding: 18px 15px;
     }
-    
+
     header h1 {
         font-size: 20px;
     }
-    
+
     nav {
         justify-content: center;
         gap: 18px;
     }
-    
+
     .container {
         margin: 25px auto;
         padding: 0 15px;
     }
-    
+
     .form-row {
         grid-template-columns: 1fr;
     }
-    
+
     .auth-card {
         padding: 25px;
     }
-    
+
     .checkout-box {
         padding: 20px;
     }
-    
+
     .admin-box {
         padding: 20px;
     }
-    
+
     .products-grid {
         grid-template-columns: 1fr;
         gap: 20px;
     }
-    
+
     .continentes {
         gap: 15px;
         margin: 30px 0;
     }
-    
+
     .continente {
         width: 125px;
         height: 125px;
     }
-    
+
     .continente .icone {
         font-size: 40px;
     }
-    
+
     .continente span:last-child {
         font-size: 16px;
     }
-    
+
     .destinos {
         margin-top: 25px;
         margin-bottom: 35px;
+        scroll-margin-top: 115px;
     }
-    
+
     .beneficios {
         padding: 40px 15px;
     }
-    
+
     .beneficios-titulo h2 {
         font-size: 24px;
     }
-    
+
     .beneficios-grid {
         grid-template-columns: 1fr;
         gap: 15px;
     }
-    
+
     .chamada-final {
         width: 100%;
         margin: 40px 0 0;
         padding: 35px 20px;
     }
-    
+
     .chamada-final h2 {
         font-size: 23px;
     }
-    
+
     .chamada-final p {
         font-size: 14px;
     }
-    
+
     footer {
         padding: 25px 15px;
     }
