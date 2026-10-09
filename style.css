@@ -133,23 +133,21 @@ body {
 
 /* CABEÇALHO FIXO */
 header {
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
-    min-height: 68px;
-    z-index: 1000;
-
     background: #0077b6;
     color: white;
     padding: 18px 30px;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    /* Mantém o cabeçalho fixo no topo */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
 }
+
 
 header h1 {
     font-size: 24px;
