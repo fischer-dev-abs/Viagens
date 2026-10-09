@@ -341,3 +341,29 @@ function sair() {
     localStorage.removeItem("precoSelecionado");
     window.location.href = "index.html";
 }
+
+// 16. LOGIN EXCLUSIVO DO ADMINISTRADOR
+const adminLoginForm = document.getElementById("admin-login-form");
+if (adminLoginForm) {
+    adminLoginForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+        const email = document
+            .getElementById("admin-email")
+            .value.trim()
+            .toLowerCase();
+        const senha = document
+            .getElementById("admin-senha")
+            .value;
+        const mensagemErro = document.getElementById("admin-erro");
+        if (
+            email === EMAIL_ADMIN.toLowerCase() &&
+            senha === SENHA_ADMIN
+        ) {
+            localStorage.setItem("usuarioLogado", "admin");
+            window.location.href = "admin.html";
+        } else {
+            mensagemErro.textContent =
+                "E-mail ou senha de administrador incorretos.";
+        }
+    });
+}
