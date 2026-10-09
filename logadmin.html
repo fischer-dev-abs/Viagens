@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Horizonte Viagens - Acesso Administrativo</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="login-page">
+
+    <div class="auth-card">
+
+        <h1>✈️ Horizonte Viagens</h1>
+
+        <p class="subtitle">Acesso do Administrador</p>
+
+        <form id="admin-login-form">
+
+            <div class="form-group">
+                <label for="admin-email">E-mail administrativo</label>
+                <input
+                    type="email"
+                    id="admin-email"
+                    placeholder="Digite seu e-mail"
+                    autocomplete="username"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="admin-senha">Senha</label>
+                <input
+                    type="password"
+                    id="admin-senha"
+                    placeholder="Digite sua senha"
+                    autocomplete="current-password"
+                    required
+                >
+            </div>
+
+            <p
+                id="admin-erro"
+                role="alert"
+                style="color: #c62828;"
+            ></p>
+
+            <button type="submit" class="btn">
+                Entrar no painel
+            </button>
+
+        </form>
+
+        <a href="produtos.html" class="btn btn-secondary">
+            Voltar ao site
+        </a>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
