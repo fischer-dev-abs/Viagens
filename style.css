@@ -1,35 +1,96 @@
-* RESET GERAL */
+/* ==========================================================================
+   HORIZONTE VIAGENS - FOLHA DE ESTILO
+   ========================================================================== */
+
+/* FONTE: Open Sans (arquivos hospedados em /fonts, funciona até offline) */
+@font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("fonts/open-sans-latin-400-normal.woff2") format("woff2"),
+         url("fonts/open-sans-latin-400-normal.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("fonts/open-sans-latin-700-normal.woff2") format("woff2"),
+         url("fonts/open-sans-latin-700-normal.woff") format("woff");
+}
+
+/* VARIÁVEIS */
+:root {
+    --azul: #0077b6;
+    --azul-escuro: #005f87;
+    --azul-claro: #00b4d8;
+    --verde: #2a9d8f;
+    --fundo: #f4f6f9;
+    --texto: #333;
+
+    /* altura do cabeçalho fixo (usada também para compensar o conteúdo) */
+    --header-h: 4rem;
+
+    --fonte: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto,
+             "Helvetica Neue", Arial, sans-serif;
+}
+
+/* RESET GERAL */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
 }
 
 html {
-    width: 100%;
-    min-height: 100%;
-    overflow-x: hidden;
-    scroll-padding-top: 90px;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    /* ao rolar até uma âncora, não deixa o cabeçalho fixo cobrir o título */
+    scroll-padding-top: calc(var(--header-h) + 1rem);
 }
 
 body {
-    width: 100%;
     min-height: 100vh;
-    padding-top: 68px;
-    background: #f4f6f9;
-    color: #333;
-    overflow-x: hidden;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    /* espaço para o cabeçalho fixo */
+    padding-top: var(--header-h);
+    background: var(--fundo);
+    color: var(--texto);
+    font-family: var(--fonte);
+    font-size: 1rem;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Campos e botões não herdam a fonte sozinhos: forçamos a Open Sans */
+button,
+input,
+select,
+textarea {
+    font: inherit;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
 }
 
 /* LOGIN */
-.login-page {
-    min-height: 100vh;
-    display: flex;
+body.login-page {
+    padding: 20px;
     align-items: center;
     justify-content: center;
-    padding: 20px;
-    background: linear-gradient(135deg, #0077b6, #00b4d8);
+    background: linear-gradient(135deg, var(--azul), var(--azul-claro));
 }
 
 .auth-card {
@@ -43,13 +104,15 @@ body {
 
 .auth-card h1 {
     text-align: center;
-    color: #0077b6;
+    color: var(--azul);
+    font-size: 1.75rem;
+    line-height: 1.25;
     margin-bottom: 5px;
 }
 
 .subtitle {
     text-align: center;
-    color: #777;
+    color: #666;
     margin-bottom: 25px;
 }
 
@@ -61,23 +124,52 @@ body {
 .form-group label {
     display: block;
     margin-bottom: 7px;
-    font-weight: bold;
-    font-size: 14px;
+    font-weight: 700;
+    font-size: 0.875rem;
 }
 
 .form-group input,
 .form-group select {
+    display: block;
     width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
+    min-height: 46px;
+    padding: 11px 12px;
+    border: 1px solid #bbb;
     border-radius: 6px;
-    font-size: 15px;
-    outline: none;
+    background-color: white;
+    /* 16px evita o zoom automático ao focar o campo no iPhone */
+    font-size: 1rem;
+    line-height: 1.4;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.form-group input[type="date"] {
+    /* o Chrome/Safari adicionam espaço interno aos campos de data */
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.form-group select {
+    padding-right: 40px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23555'%3E%3Cpath d='M5 7l5 6 5-6z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
 }
 
 .form-group input:focus,
 .form-group select:focus {
-    border-color: #0077b6;
+    border-color: var(--azul);
+    box-shadow: 0 0 0 3px rgba(0, 119, 182, 0.2);
+}
+
+.form-group input[readonly] {
+    background-color: #eee;
+    cursor: default;
 }
 
 .form-row {
@@ -86,25 +178,37 @@ body {
     gap: 15px;
 }
 
+.form-erro {
+    min-height: 1.5em;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: #c62828;
+}
+
 /* BOTÕES */
 .btn {
-    width: 100%;
     display: block;
-    padding: 12px;
+    width: 100%;
+    min-height: 46px;
+    padding: 11px 12px;
     margin-top: 10px;
     border: none;
     border-radius: 6px;
-    background: #0077b6;
+    background: var(--azul);
     color: white;
     text-align: center;
     text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.4;
     cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    transition: background-color 0.2s;
 }
 
 .btn:hover {
-    background: #005f87;
+    background: var(--azul-escuro);
 }
 
 .btn-secondary {
@@ -116,73 +220,104 @@ body {
     background: #545b62;
 }
 
+.btn:focus-visible,
+.continente:focus-visible,
+.chamada-final button:focus-visible {
+    outline: 3px solid rgba(0, 119, 182, 0.5);
+    outline-offset: 2px;
+}
+
 /* LOGIN EXTRA */
 .divider {
     text-align: center;
     margin: 20px 0;
-    color: #999;
+    color: #888;
 }
 
 .hint {
     margin-top: 20px;
     text-align: center;
-    font-size: 12px;
-    color: #777;
+    font-size: 0.8rem;
+    color: #666;
     line-height: 1.5;
 }
 
 /* CABEÇALHO FIXO */
 header {
-    width: 100%;
-    background: #0077b6;
-    color: white;
-    padding: 18px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    /* Mantém o cabeçalho fixo no topo */
     position: fixed;
     top: 0;
     left: 0;
+    right: 0;
     z-index: 1000;
-}
 
-
-header h1 {
-    font-size: 24px;
-}
-
-header a {
-    text-decoration: none;
-    color: white;
-}
-
-nav {
     display: flex;
     align-items: center;
-    gap: 20px;
+    justify-content: space-between;
+    gap: 12px;
+
+    min-height: var(--header-h);
+    padding: 0 clamp(14px, 4vw, 30px);
+    background: var(--azul);
+    color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
 }
 
-nav a,
-nav button {
+header > a {
+    display: block;
+    min-width: 0;
     color: white;
     text-decoration: none;
-    background: none;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
 }
 
-nav a:hover,
-nav button:hover {
-    text-decoration: underline;
+header h1 {
+    font-size: clamp(1.05rem, 4.2vw, 1.5rem);
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 6px;
+}
+
+header nav a,
+header nav button {
+    display: inline-block;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    background: none;
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    line-height: 1.2;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    transition: background-color 0.2s;
+}
+
+header nav a:hover,
+header nav button:hover {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+header nav a:focus-visible,
+header nav button:focus-visible,
+header > a:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 2px;
 }
 
 /* CONTAINER PRINCIPAL */
 .container {
     width: 100%;
     max-width: 1100px;
+    min-width: 0;
     margin: 35px auto;
     padding: 0 20px;
 }
@@ -192,7 +327,9 @@ nav button:hover {
 }
 
 .welcome h2 {
-    color: #0077b6;
+    color: var(--azul);
+    font-size: 1.5rem;
+    line-height: 1.3;
     margin-bottom: 5px;
 }
 
@@ -200,10 +337,13 @@ nav button:hover {
 .products-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
     gap: 25px;
 }
 
 .product-card {
+    display: flex;
+    flex-direction: column;
     background: white;
     border-radius: 10px;
     overflow: hidden;
@@ -215,27 +355,34 @@ nav button:hover {
     width: 100%;
     height: 190px;
     object-fit: cover;
+    background: #dfe7ee;
 }
 
 .product-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
     padding: 20px;
 }
 
 .product-info h3 {
-    color: #0077b6;
+    color: var(--azul);
+    font-size: 1.15rem;
+    line-height: 1.3;
     margin-bottom: 8px;
 }
 
 .product-info p {
+    flex: 1;
     color: #666;
     line-height: 1.5;
     margin-bottom: 15px;
 }
 
 .price {
-    color: #2a9d8f;
-    font-size: 21px;
-    font-weight: bold;
+    color: #1f7a6f;
+    font-size: 1.3rem;
+    font-weight: 700;
     margin-bottom: 10px;
 }
 
@@ -251,12 +398,10 @@ nav button:hover {
 }
 
 .checkout-box h2 {
-    color: #0077b6;
+    color: var(--azul);
+    font-size: 1.5rem;
+    line-height: 1.3;
     margin-bottom: 25px;
-}
-
-#compra-destino {
-    background: #eee;
 }
 
 /* ADMINISTRAÇÃO */
@@ -268,11 +413,14 @@ nav button:hover {
 }
 
 .admin-box h2 {
-    color: #0077b6;
+    color: var(--azul);
+    font-size: 1.5rem;
+    line-height: 1.3;
     margin-bottom: 10px;
 }
 
 .admin-box h3 {
+    font-size: 1.15rem;
     margin-top: 30px;
     margin-bottom: 15px;
 }
@@ -283,21 +431,22 @@ nav button:hover {
 
 .stat-card {
     width: 220px;
+    max-width: 100%;
     padding: 20px;
     border-radius: 8px;
     background: #e9f7fb;
-    border-left: 5px solid #0077b6;
+    border-left: 5px solid var(--azul);
 }
 
 .stat-card span {
     display: block;
-    color: #666;
+    color: #555;
     margin-bottom: 5px;
 }
 
 .stat-card strong {
-    font-size: 28px;
-    color: #0077b6;
+    font-size: 1.75rem;
+    color: var(--azul);
 }
 
 .compras-lista {
@@ -309,16 +458,18 @@ nav button:hover {
 .compra-item {
     padding: 15px;
     border-radius: 7px;
-    background: #f4f6f9;
-    border-left: 4px solid #2a9d8f;
+    background: var(--fundo);
+    border-left: 4px solid var(--verde);
+    line-height: 1.7;
+    overflow-wrap: anywhere;
 }
 
 .compra-item strong {
-    color: #0077b6;
+    color: var(--azul);
 }
 
 .empty {
-    color: #777;
+    color: #666;
 }
 
 /* CONTINENTES */
@@ -337,7 +488,7 @@ nav button:hover {
     flex-shrink: 0;
     border: none;
     border-radius: 50%;
-    background: linear-gradient(135deg, #0077b6, #00b4d8);
+    background: linear-gradient(135deg, var(--azul), var(--azul-claro));
     color: white;
 
     display: flex;
@@ -347,33 +498,32 @@ nav button:hover {
 
     cursor: pointer;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    transition: 0.3s;
-}
-
-.continente:hover {
-    transform: scale(1.08);
-    background: linear-gradient(135deg, #005f87, #0096c7);
+    -webkit-appearance: none;
+    appearance: none;
+    transition: transform 0.3s, background 0.3s;
 }
 
 .continente .icone {
-    font-size: 55px;
+    font-size: 3.4rem;
+    line-height: 1.1;
     margin-bottom: 8px;
 }
 
 .continente span:last-child {
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 1.125rem;
+    font-weight: 700;
 }
 
 /* DESTINOS */
 .destinos {
     margin-top: 30px;
     margin-bottom: 50px;
-    scroll-margin-top: 90px;
 }
 
 .destinos h2 {
-    color: #0077b6;
+    color: var(--azul);
+    font-size: 1.5rem;
+    line-height: 1.3;
     text-align: center;
     margin-bottom: 25px;
 }
@@ -382,10 +532,10 @@ nav button:hover {
     display: none;
 }
 
-/* BENEFÍCIOS */
+/* BENEFÍCIOS (seção em largura total) */
 .beneficios {
     width: 100%;
-    margin-top: 70px;
+    margin-top: 35px;
     padding: 55px 20px;
     background: #eaf7fb;
     border-top: 1px solid #d8edf3;
@@ -398,14 +548,15 @@ nav button:hover {
 }
 
 .beneficios-titulo h2 {
-    color: #0077b6;
-    font-size: 28px;
+    color: var(--azul);
+    font-size: 1.75rem;
+    line-height: 1.3;
     margin-bottom: 8px;
 }
 
 .beneficios-titulo p {
-    color: #666;
-    font-size: 15px;
+    color: #555;
+    font-size: 0.95rem;
 }
 
 .beneficios-grid {
@@ -425,12 +576,7 @@ nav button:hover {
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
-    transition: 0.3s;
-}
-
-.beneficio:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .beneficio-icone {
@@ -444,37 +590,34 @@ nav button:hover {
 
     border-radius: 50%;
     background: #e6f6fa;
-    font-size: 29px;
+    font-size: 1.8rem;
 }
 
 .beneficio h3 {
-    color: #0077b6;
-    font-size: 17px;
+    color: var(--azul);
+    font-size: 1.05rem;
     margin-bottom: 9px;
 }
 
 .beneficio p {
-    color: #666;
-    font-size: 13px;
+    color: #555;
+    font-size: 0.85rem;
     line-height: 1.5;
 }
 
-/* CHAMADA FINAL */
+/* CHAMADA FINAL (seção em largura total) */
 .chamada-final {
-    display: block;
     width: 100%;
-    max-width: none;
-    margin: 55px 0 0;
-    padding: 45px 25px;
-    border-radius: 0;
+    margin-top: 55px;
+    padding: 50px 25px;
     text-align: center;
     color: white;
-    background: linear-gradient(135deg, #0077b6, #00b4d8);
-    box-shadow: 0 7px 20px rgba(0, 119, 182, 0.18);
+    background: linear-gradient(135deg, var(--azul), var(--azul-claro));
 }
 
 .chamada-final h2 {
-    font-size: 27px;
+    font-size: 1.7rem;
+    line-height: 1.3;
     margin-bottom: 10px;
 }
 
@@ -483,58 +626,119 @@ nav button:hover {
     max-width: 600px;
     margin: 0 auto 22px;
     line-height: 1.5;
-    opacity: 0.95;
 }
 
 .chamada-final button {
+    min-height: 46px;
     border: none;
-    padding: 12px 25px;
+    padding: 12px 28px;
     border-radius: 6px;
     background: white;
-    color: #0077b6;
-    font-size: 15px;
-    font-weight: bold;
+    color: var(--azul);
+    font-size: 1rem;
+    font-weight: 700;
     cursor: pointer;
-    transition: 0.3s;
+    -webkit-appearance: none;
+    appearance: none;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.chamada-final button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+/* Efeitos de hover só em dispositivos com mouse (evita "hover preso" no toque) */
+@media (hover: hover) {
+    .continente:hover {
+        transform: scale(1.08);
+        background: linear-gradient(135deg, var(--azul-escuro), #0096c7);
+    }
+
+    .beneficio:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .chamada-final button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+    }
 }
 
-/* RODAPÉ */
+/* RODAPÉ (largura total, sempre no fim da página) */
 footer {
-    display: block;
     width: 100%;
-    max-width: none;
-    margin: 0;
-    padding: 25px 20px;
-    background: #006a9f;
-    color: white;
-    text-align: center;
+    margin-top: auto;
+    background: #023e5f;
+    color: #e3f2f9;
+}
+
+.footer-conteudo {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 20px 45px;
+
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr;
+    gap: 40px;
 }
 
 .footer-logo {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 7px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: white;
+    margin-bottom: 14px;
 }
 
-footer p {
-    margin: 0;
-    font-size: 12px;
-    line-height: 1.5;
-    opacity: 0.9;
+.footer-sobre {
+    max-width: 38ch;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #c4e0ee;
+}
+
+.footer-titulo {
+    margin-bottom: 18px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: white;
+}
+
+.footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+}
+
+.footer-col a {
+    color: #c4e0ee;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.footer-col a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.footer-col a:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 3px;
+}
+
+.footer-base {
+    padding: 22px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    text-align: center;
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: #b3d4e4;
 }
 
 /* RESPONSIVIDADE: TABLETS */
 @media (max-width: 800px) {
     .beneficios-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .products-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
@@ -548,31 +752,30 @@ footer p {
     }
 
     .continente .icone {
-        font-size: 45px;
+        font-size: 2.8rem;
+    }
+
+    .footer-conteudo {
+        grid-template-columns: 1fr 1fr;
+        gap: 35px 30px;
+        padding: 50px 20px 35px;
+    }
+
+    .footer-marca {
+        grid-column: 1 / -1;
     }
 }
 
 /* RESPONSIVIDADE: CELULARES */
 @media (max-width: 500px) {
-    body {
-        padding-top: 100px;
+    :root {
+        --header-h: 3.5rem;
     }
 
-    header {
-        min-height: 100px;
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-        padding: 18px 15px;
-    }
-
-    header h1 {
-        font-size: 20px;
-    }
-
-    nav {
-        justify-content: center;
-        gap: 18px;
+    header nav a,
+    header nav button {
+        padding: 8px 10px;
+        font-size: 0.9rem;
     }
 
     .container {
@@ -580,24 +783,25 @@ footer p {
         padding: 0 15px;
     }
 
-    .form-row {
-        grid-template-columns: 1fr;
-    }
-
     .auth-card {
         padding: 25px;
     }
 
-    .checkout-box {
-        padding: 20px;
+    .auth-card h1 {
+        font-size: 1.5rem;
     }
 
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .checkout-box,
     .admin-box {
         padding: 20px;
     }
 
     .products-grid {
-        grid-template-columns: 1fr;
         gap: 20px;
     }
 
@@ -612,17 +816,16 @@ footer p {
     }
 
     .continente .icone {
-        font-size: 40px;
+        font-size: 2.5rem;
     }
 
     .continente span:last-child {
-        font-size: 16px;
+        font-size: 1rem;
     }
 
     .destinos {
         margin-top: 25px;
         margin-bottom: 35px;
-        scroll-margin-top: 115px;
     }
 
     .beneficios {
@@ -630,7 +833,7 @@ footer p {
     }
 
     .beneficios-titulo h2 {
-        font-size: 24px;
+        font-size: 1.5rem;
     }
 
     .beneficios-grid {
@@ -639,20 +842,30 @@ footer p {
     }
 
     .chamada-final {
-        width: 100%;
-        margin: 40px 0 0;
-        padding: 35px 20px;
+        margin-top: 40px;
+        padding: 40px 20px;
     }
 
     .chamada-final h2 {
-        font-size: 23px;
+        font-size: 1.45rem;
     }
 
     .chamada-final p {
-        font-size: 14px;
+        font-size: 0.9rem;
     }
 
-    footer {
-        padding: 25px 15px;
+    .footer-conteudo {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 40px 20px 30px;
+    }
+}
+
+/* Respeita quem prefere menos animação */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
     }
 }
