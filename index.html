@@ -17,6 +17,11 @@
             Sistema de Turismo
         </p>
 
+        <div class="tabs">
+    <button type="button" class="tab ativa" id="tab-cliente">Cliente</button>
+    <button type="button" class="tab" id="tab-admin">Administrador</button>
+        </div>
+
         <form id="login-form">
 
             <div class="form-group">
@@ -106,24 +111,31 @@
     </div>
 
              </div>
-
+    
         <script src="script.js"></script>
-
         <script>
-            const btnAdminToggle = document.getElementById("btn-admin-toggle");
-            const adminSub = document.getElementById("admin-sub");
+    const tabCliente = document.getElementById("tab-cliente");
+    const tabAdmin = document.getElementById("tab-admin");
+    const painelCliente = document.getElementById("painel-cliente");
+    const painelAdmin = document.getElementById("painel-admin");
 
-            btnAdminToggle.addEventListener("click", function () {
-                const aberto = !adminSub.hidden;
-                adminSub.hidden = aberto;
-                btnAdminToggle.setAttribute("aria-expanded", String(!aberto));
-                if (!aberto) document.getElementById("admin-email").focus();
-            });
-        </script>
+    tabCliente.onclick = function () {
+        painelCliente.hidden = false;
+        painelAdmin.hidden = true;
+        tabCliente.classList.add("ativa");
+        tabAdmin.classList.remove("ativa");
+    };
 
+    tabAdmin.onclick = function () {
+        painelCliente.hidden = true;
+        painelAdmin.hidden = false;
+        tabAdmin.classList.add("ativa");
+        tabCliente.classList.remove("ativa");
+    };
+    
+</script>
+    
     </body>
     </html>
     </script>
 
-</body>
-</html>
