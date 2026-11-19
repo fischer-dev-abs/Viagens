@@ -245,56 +245,84 @@
         </div>
     </section>
 
-    <!-- Por que viajar com a Horizonte? -->
-    <section class="beneficios">
-        <div class="beneficios-titulo">
-            <h2>Por que viajar com a Horizonte?</h2>
-            <p>Tudo pensado para você aproveitar melhor sua viagem.</p>
+    </main>
+
+<!-- Por que viajar com a Horizonte? -->
+<section class="beneficios">
+    <div class="beneficios-titulo">
+        <h2>Por que viajar com a Horizonte?</h2>
+        <p>Tudo pensado para você aproveitar melhor sua viagem.</p>
+    </div>
+
+    <div class="beneficios-grid">
+        <div class="beneficio">
+            <div class="beneficio-icone">✈️</div>
+            <h3>Pacotes completos</h3>
+            <p>Encontre opções de viagem pensadas para facilitar toda a sua experiência.</p>
         </div>
 
-        <div class="beneficios-grid">
-            <div class="beneficio">
-                <div class="beneficio-icone">✈️</div>
-                <h3>Pacotes completos</h3>
-                <p>Encontre opções de viagem pensadas para facilitar toda a sua experiência.</p>
-            </div>
-
-            <div class="beneficio">
-                <div class="beneficio-icone">✈️</div>
-                <h3>Hotéis selecionados</h3>
-                <p>Hospedagens escolhidas para deixar sua viagem mais confortável.</p>
-            </div>
-
-            <div class="beneficio">
-                <div class="beneficio-icone">✈️</div>
-                <h3>Viagem segura</h3>
-                <p>Conte com suporte e tranquilidade durante o planejamento da sua viagem.</p>
-            </div>
-
-            <div class="beneficio">
-                <div class="beneficio-icone">✈️</div>
-                <h3>Facilidade</h3>
-                <p>Encontre destinos e opções que combinam com seu planejamento.</p>
-            </div>
+        <div class="beneficio">
+            <div class="beneficio-icone">✈️</div>
+            <h3>Hotéis selecionados</h3>
+            <p>Hospedagens escolhidas para deixar sua viagem mais confortável.</p>
         </div>
-    </section>
 
-    <!-- Chamada final -->
-    <section class="chamada-final">
-        <h2>✈️ Seu próximo destino começa aqui</h2>
-        <p>O mundo está esperando por você. Escolha um continente e comece sua próxima aventura.</p>
-        <button onclick="document.querySelector('.continentes').scrollIntoView({ behavior: 'smooth' })">
-            Explorar destinos
-        </button>
-    </section>
+        <div class="beneficio">
+            <div class="beneficio-icone">✈️</div>
+            <h3>Viagem segura</h3>
+            <p>Conte com suporte e tranquilidade durante o planejamento da sua viagem.</p>
+        </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-logo">✈️ Horizonte Viagens</div>
-        <p>© 2026 Horizonte Viagens — Todos os direitos reservados.</p>
-    </footer>
+        <div class="beneficio">
+            <div class="beneficio-icone">✈️</div>
+            <h3>Facilidade</h3>
+            <p>Encontre destinos e opções que combinam com seu planejamento.</p>
+        </div>
+    </div>
+</section>
 
-</main>
+<!-- Chamada final -->
+<section class="chamada-final">
+    <h2>✈️ Seu próximo destino começa aqui</h2>
+    <p>O mundo está esperando por você. Escolha um continente e comece sua próxima aventura.</p>
+    <button onclick="document.querySelector('.continentes').scrollIntoView({ behavior: 'smooth' })">
+        Explorar destinos
+    </button>
+</section>
+
+<!-- Footer (largura total) -->
+<footer>
+    <div class="footer-conteudo">
+
+        <div class="footer-marca">
+            <div class="footer-logo">✈️ Horizonte Viagens</div>
+            <p class="footer-sobre">
+                Seu próximo destino começa aqui. Escolha um continente e comece sua próxima aventura.
+            </p>
+        </div>
+
+        <div class="footer-col">
+            <h4 class="footer-titulo">Navegação</h4>
+            <ul>
+                <li><a href="produtos.html">Destinos</a></li>
+                <li><a href="#" onclick="document.querySelector('.continentes').scrollIntoView({ behavior: 'smooth' }); return false;">Continentes</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4 class="footer-titulo">Conta</h4>
+            <ul>
+                <li><a href="logadmin.html">Administração</a></li>
+                <li><a href="#" onclick="sair(); return false;">Sair</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="footer-base">
+        2026 Horizonte Viagens — Todos os direitos reservados.
+    </div>
+</footer>
 
 <script src="script.js"></script>
 
