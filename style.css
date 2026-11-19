@@ -233,6 +233,29 @@ body.login-page {
     margin: 20px 0;
     color: #888;
 }
+/* BOTÃO / SUB-ITEM ADMINISTRADOR */
+.btn-admin {
+    background: transparent;
+    color: var(--azul);
+    border: 2px solid var(--azul);
+}
+
+.btn-admin:hover {
+    background: var(--azul);
+    color: white;
+}
+
+.admin-sub {
+    margin-top: 15px;
+    padding: 20px 18px 8px;
+    border: 1px solid #d8edf3;
+    border-radius: 8px;
+    background: #eaf7fb;
+}
+
+.admin-sub[hidden] {
+    display: none;
+}
 
 .hint {
     margin-top: 20px;
