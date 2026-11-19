@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horizonte Viagens - Entrar</title>
+    <title>Horizonte Viagens - Login</title>
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* ABAS */
+        /* ==========================
+           ABAS (Cliente / Administrador)
+           ========================== */
         .tabs {
             display: flex;
             margin-bottom: 25px;
@@ -37,13 +39,16 @@
             display: none !important;
         }
 
-        /* As duas abas ficam com a mesma altura */
+        /* ==========================
+           MESMO TAMANHO NAS DUAS ABAS
+           (ajuste o valor se sobrar ou faltar espaço)
+           ========================== */
         #painel-cliente,
         #painel-admin {
             min-height: 330px;
         }
 
-        /* Painel admin sem espaço vazio no lugar do erro */
+        /* Remove o espaço vazio do erro no painel admin */
         #painel-admin .form-erro {
             min-height: 0;
             margin: 0;
@@ -51,13 +56,6 @@
 
         #painel-admin .form-erro:not(:empty) {
             margin-bottom: 12px;
-        }
-
-        .boas-vindas {
-            margin-bottom: 18px;
-            text-align: center;
-            font-size: 0.95rem;
-            color: #555;
         }
     </style>
 </head>
@@ -69,41 +67,36 @@
         <h1>Horizonte Viagens</h1>
 
         <p class="subtitle">
-            Seu próximo destino começa aqui
+            Sistema de Turismo
         </p>
 
+        <!-- ABAS -->
         <div class="tabs">
-            <button type="button" class="tab ativa" id="tab-cliente">Sou cliente</button>
-            <button type="button" class="tab" id="tab-admin">Sou administrador</button>
+            <button type="button" class="tab ativa" id="tab-cliente">Cliente</button>
+            <button type="button" class="tab" id="tab-admin">Administrador</button>
         </div>
 
         <!-- PAINEL CLIENTE -->
         <div id="painel-cliente">
 
-            <p class="boas-vindas">
-                Que bom ter você de volta! Entre para ver nossos destinos.
-            </p>
-
             <form id="login-form">
 
                 <div class="form-group">
-                    <label for="login-email">Seu e-mail</label>
+                    <label for="login-email">E-mail</label>
                     <input
                         type="email"
                         id="login-email"
-                        placeholder="exemplo@email.com"
-                        autocomplete="email"
+                        placeholder="Digite seu e-mail"
                         required
                     >
                 </div>
 
                 <div class="form-group">
-                    <label for="login-senha">Sua senha</label>
+                    <label for="login-senha">Senha</label>
                     <input
                         type="password"
                         id="login-senha"
                         placeholder="Digite sua senha"
-                        autocomplete="current-password"
                         required
                     >
                 </div>
@@ -115,21 +108,17 @@
             </form>
 
             <div class="divider">
-                ainda não tem conta?
+                ou
             </div>
 
             <a href="cadastro.html" class="btn btn-secondary">
-                Criar minha conta
+                Criar uma conta
             </a>
 
         </div>
 
         <!-- PAINEL ADMINISTRADOR -->
         <div id="painel-admin" hidden>
-
-            <p class="boas-vindas">
-                Olá! Acesse o painel para acompanhar as compras dos clientes.
-            </p>
 
             <form id="admin-login-form">
 
@@ -138,19 +127,17 @@
                     <input
                         type="email"
                         id="admin-email"
-                        placeholder="admin@exemplo.com"
-                        autocomplete="username"
+                        placeholder="Digite o e-mail do administrador"
                         required
                     >
                 </div>
 
                 <div class="form-group">
-                    <label for="admin-senha">Senha</label>
+                    <label for="admin-senha">Senha do administrador</label>
                     <input
                         type="password"
                         id="admin-senha"
-                        placeholder="Digite sua senha"
-                        autocomplete="current-password"
+                        placeholder="Digite a senha"
                         required
                     >
                 </div>
@@ -168,12 +155,15 @@
     </div>
 
     <script src="script.js"></script>
+
     <script>
+        // Elementos das abas e dos painéis
         const tabCliente = document.getElementById("tab-cliente");
         const tabAdmin = document.getElementById("tab-admin");
         const painelCliente = document.getElementById("painel-cliente");
         const painelAdmin = document.getElementById("painel-admin");
 
+        // Mostra o painel do cliente
         tabCliente.onclick = function () {
             painelCliente.hidden = false;
             painelAdmin.hidden = true;
@@ -181,6 +171,7 @@
             tabAdmin.classList.remove("ativa");
         };
 
+        // Mostra o painel do administrador
         tabAdmin.onclick = function () {
             painelCliente.hidden = true;
             painelAdmin.hidden = false;
