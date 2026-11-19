@@ -109,7 +109,17 @@
 
     </div>
 
-    <script src="script.js"></script>
+      <script>
+        const btnAdminToggle = document.getElementById("btn-admin-toggle");
+        const adminSub = document.getElementById("admin-sub");
+
+        btnAdminToggle.addEventListener("click", function () {
+            const aberto = !adminSub.hidden;
+            adminSub.hidden = aberto;
+            btnAdminToggle.setAttribute("aria-expanded", String(!aberto));
+            if (!aberto) document.getElementById("admin-email").focus();
+        });
+    </script>
 
 </body>
 </html>
