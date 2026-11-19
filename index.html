@@ -102,30 +102,28 @@
 
              </div>
     
-        <script src="script.js"></script>
-        <script>
-    const tabCliente = document.getElementById("tab-cliente");
-    const tabAdmin = document.getElementById("tab-admin");
-    const painelCliente = document.getElementById("painel-cliente");
-    const painelAdmin = document.getElementById("painel-admin");
+          <script src="script.js"></script>
+    <script>
+        const tabCliente = document.getElementById("tab-cliente");
+        const tabAdmin = document.getElementById("tab-admin");
+        const painelCliente = document.getElementById("painel-cliente");
+        const painelAdmin = document.getElementById("painel-admin");
 
-    tabCliente.onclick = function () {
-        painelCliente.hidden = false;
-        painelAdmin.hidden = true;
-        tabCliente.classList.add("ativa");
-        tabAdmin.classList.remove("ativa");
-    };
+        tabCliente.onclick = function () {
+            painelCliente.hidden = false;
+            painelAdmin.hidden = true;
+            tabCliente.classList.add("ativa");
+            tabAdmin.classList.remove("ativa");
+        };
 
-    tabAdmin.onclick = function () {
-        painelCliente.hidden = true;
-        painelAdmin.hidden = false;
-        tabAdmin.classList.add("ativa");
-        tabCliente.classList.remove("ativa");
-    };
-    
-</script>
-    
-    </body>
-    </html>
+        tabAdmin.onclick = function () {
+            painelCliente.hidden = true;
+            painelAdmin.hidden = false;
+            tabAdmin.classList.add("ativa");
+            tabCliente.classList.remove("ativa");
+        };
     </script>
+
+</body>
+</html>
 
