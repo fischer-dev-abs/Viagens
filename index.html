@@ -59,11 +59,53 @@
             Criar uma conta
         </a>
 
-        <p class="hint">
-            <strong>Administrador:</strong><br>
-            admin@horizon.com<br>
-            Senha: 123
-        </p>
+              <a href="cadastro.html" class="btn btn-secondary">
+            Criar uma conta
+        </a>
+
+        <!-- Botão Administrador (abre/fecha o sub-item) -->
+        <button
+            type="button"
+            id="btn-admin-toggle"
+            class="btn btn-admin"
+            aria-expanded="false"
+            aria-controls="admin-sub"
+        >
+            Administrador
+        </button>
+
+        <!-- Sub-item: login do administrador -->
+        <div id="admin-sub" class="admin-sub" hidden>
+            <form id="admin-login-form">
+
+                <div class="form-group">
+                    <label for="admin-email">E-mail do administrador</label>
+                    <input
+                        type="email"
+                        id="admin-email"
+                        placeholder="Digite o e-mail do administrador"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="admin-senha">Senha do administrador</label>
+                    <input
+                        type="password"
+                        id="admin-senha"
+                        placeholder="Digite a senha"
+                        required
+                    >
+                </div>
+
+                <p id="admin-erro" class="form-erro" role="alert"></p>
+
+                <button type="submit" class="btn">
+                    Acessar painel
+                </button>
+
+            </form>
+        </div>
 
     </div>
 
