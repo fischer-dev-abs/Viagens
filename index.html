@@ -18,55 +18,54 @@
         </p>
 
         <div class="tabs">
-    <button type="button" class="tab ativa" id="tab-cliente">Cliente</button>
-    <button type="button" class="tab" id="tab-admin">Administrador</button>
+            <button type="button" class="tab ativa" id="tab-cliente">Cliente</button>
+            <button type="button" class="tab" id="tab-admin">Administrador</button>
         </div>
 
-        <form id="login-form">
+        <!-- PAINEL CLIENTE -->
+        <div id="painel-cliente">
 
-            <div class="form-group">
-                <label for="login-email">
-                    E-mail
-                </label>
+            <form id="login-form">
 
-                <input
-                    type="email"
-                    id="login-email"
-                    placeholder="Digite seu e-mail"
-                    required
-                >
+                <div class="form-group">
+                    <label for="login-email">E-mail</label>
+                    <input
+                        type="email"
+                        id="login-email"
+                        placeholder="Digite seu e-mail"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="login-senha">Senha</label>
+                    <input
+                        type="password"
+                        id="login-senha"
+                        placeholder="Digite sua senha"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="btn">
+                    Entrar
+                </button>
+
+            </form>
+
+            <div class="divider">
+                ou
             </div>
 
-            <div class="form-group">
-                <label for="login-senha">
-                    Senha
-                </label>
+            <a href="cadastro.html" class="btn btn-secondary">
+                Criar uma conta
+            </a>
 
-                <input
-                    type="password"
-                    id="login-senha"
-                    placeholder="Digite sua senha"
-                    required
-                >
-            </div>
-
-            <button type="submit" class="btn">
-                Entrar
-            </button>
-
-        </form>
-
-        <div class="divider">
-            ou
         </div>
 
-              <a href="cadastro.html" class="btn btn-secondary">
-            Criar uma conta
-        </a>
+        <!-- PAINEL ADMINISTRADOR -->
+        <div id="painel-admin" hidden>
 
-
-        <!-- Sub-item: login do administrador -->
-        <div id="admin-sub" class="admin-sub" hidden>
             <form id="admin-login-form">
 
                 <div class="form-group">
@@ -96,13 +95,12 @@
                 </button>
 
             </form>
+
         </div>
 
     </div>
 
-             </div>
-    
-          <script src="script.js"></script>
+    <script src="script.js"></script>
     <script>
         const tabCliente = document.getElementById("tab-cliente");
         const tabAdmin = document.getElementById("tab-admin");
@@ -126,4 +124,3 @@
 
 </body>
 </html>
-
