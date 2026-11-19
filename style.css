@@ -890,5 +890,25 @@ footer {
     *::before,
     *::after {
         transition: none !important;
+
+       .tabs { display: flex; margin-bottom: 25px; }
+
+.tab {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-bottom: 3px solid #ddd;
+    background: none;
+    color: #777;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.tab.ativa {
+    color: var(--azul);
+    border-bottom-color: var(--azul);
+}
+
+[hidden] { display: none !important; }
     }
 }
